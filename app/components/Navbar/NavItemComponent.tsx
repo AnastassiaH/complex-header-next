@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { NavItem } from "@/app/components/Header";
+import { Navigation } from "@/app/config/navData";
 import NavLinkOpenBlock from "./Sublinks/NavLinkOpenBlock";
 
 interface NavItemProps {
-  item: NavItem;
+  item: Navigation;
   activeNav: string | null;
   setActiveNav: (nav: string) => void;
 }

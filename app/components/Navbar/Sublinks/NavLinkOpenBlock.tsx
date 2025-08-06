@@ -1,17 +1,17 @@
 import { useState } from "react";
-import { NavItem } from "@/app/components/Header";
 import { ContentWrapper } from "@/app/components/ui";
 import Link from "next/link";
+import { Navigation } from "@/app/config/navData";
 
 interface SublinksBlockProps {
   activeNav: string | null;
-  navItem: NavItem;
+  navItem: Navigation;
 }
 
 const NavLinkOpenBlock = ({ activeNav, navItem }: SublinksBlockProps) => {
   const [activeSublink, setActiveSublink] = useState<string | null>(null);
   const sublink = navItem?.children?.find((sublink) => sublink.id === activeSublink);
-  const SublinkContentComponent = sublink ? sublink.contentComponent : null;
+  const SublinkContentComponent = sublink ? sublink.component : null;
 
   return (
     <div

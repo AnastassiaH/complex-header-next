@@ -1,14 +1,11 @@
 'use client'
 
-import { NavItem } from "../Header";
 import { useState } from "react";
 import NavItemComponent from "./NavItemComponent";
+import { Navigation } from "@/app/config/navData";
+import { navItems } from "@/app/config/navData";
 
-interface NavbarProps {
-  navItems: NavItem[];
-}
-
-export default function Navbar({ navItems }: NavbarProps) {
+export default function Navbar() {
   const [activeNav, setActiveNav] = useState<string | null>(null);
 
   const clearActiveLink = () => {

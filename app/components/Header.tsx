@@ -1,81 +1,7 @@
 'use client'
 
-import { v4 as uuidv4 } from 'uuid'
-import { ContentWrapper } from "./ui";
 import Navbar from "./Navbar/Navbar";
-import WebDevelopmentBlock from "./Navbar/Sublinks/WebDevelopmentBlock";
-import MobileAppsBlock from "./Navbar/Sublinks/MobileAppsBlock";
-
-export type NavItem = {
-  id: string;
-  label: string;
-  path?: string;
-  children?: NavItem[];
-  contentComponent?: React.FC;
-};
-
-
-const navItems: NavItem[] = [
-  {
-    id: 'home',
-    label: 'Home',
-    path: '/',
-  },
-  {
-    id: 'services',
-    label: 'Services',
-    path: '/services',
-    children: [
-      {
-        id: 'web-development',
-        label: 'Web Development',
-        contentComponent: WebDevelopmentBlock
-      },
-      {
-        id: 'mobile-apps',
-        label: 'Mobile Apps',
-        contentComponent: MobileAppsBlock
-      },
-      {
-        id: 'ui-ux-design',
-        label: 'UI/UX Design',
-      },
-      {
-        id: 'cloud-solutions',
-        label: 'Cloud Solutions',
-      },
-    ]
-  },
-  {
-    id: 'industries',
-    label: 'Industries',
-    path: '/industries',
-    children: [
-      {
-        id: 'healthcare',
-        label: 'Healthcare',
-      },
-      {
-        id: 'finance',
-        label: 'Finance',
-      },
-      {
-        id: 'e-commerce',
-        label: 'E-commerce',
-      },
-      {
-        id: 'education',
-        label: 'Education',
-      },
-    ]
-  },
-  {
-    id: 'expertise',
-    label: 'Expertise',
-    path: '/expertise',
-    children: []
-  }
-];
+import { ContentWrapper } from "./ui";
 
 export default function Header() {
   return (
@@ -84,7 +10,7 @@ export default function Header() {
         <ContentWrapper>
           <div className="hidden md:flex justify-between items-center h-[72px]">
             <h1 className="text-2xl font-bold text-white">Exclusive</h1>
-            <Navbar navItems={navItems} />
+            <Navbar />
             <NavActions />
           </div>
           <div className="md:hidden flex justify-between items-center h-[72px]">
