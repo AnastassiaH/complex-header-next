@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Navigation } from "@/app/config/navData";
-import NavLinkOpenBlock from "./Sublinks/NavLinkOpenBlock";
+import NavLinkActiveBlock from "./Sublinks/NavLinkActiveBlock";
 
 interface NavItemProps {
   item: Navigation;
@@ -17,12 +17,12 @@ const NavItemComponent: React.FC<NavItemProps> = ({ item, activeNav, setActiveNa
       className="h-full px-2"
       onMouseEnter={() => setActiveNav(item.id)}
     >
-      <Link href={`/${item.id}`}
+      <Link href={item.path}
         className="h-full flex items-center text-white hover:text-gray-300 transition-colors">
         {item.label}
 
       </Link>
-      {hasSublinks && <NavLinkOpenBlock activeNav={activeNav} navItem={item} />}
+      {hasSublinks && <NavLinkActiveBlock activeNav={activeNav} navItem={item} />}
     </li>
   )
 }
