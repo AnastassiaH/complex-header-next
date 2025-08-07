@@ -9,7 +9,7 @@ interface NavItemProps {
 }
 
 const NavItemComponent: React.FC<NavItemProps> = ({ item, activeNav, setActiveNav }) => {
-  const isMoreInfo = !!item.categories?.length;
+  const isMoreInfo = !!item.categories?.length || !!item.children?.length;
   const isItemActive = item.id === activeNav?.id;
 
   return (

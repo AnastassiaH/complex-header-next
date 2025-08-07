@@ -139,14 +139,14 @@ const navItems: NavItem[] = [
 
 const ExpertiseNavLayout = () => {
   return (
-    <div className="flex flex-col flex-wrap gap-6 gap-x-20" style={{ height: '-webkit-fill-available' }}>
+    <div className="flex flex-col flex-wrap gap-6 gap-x-16" style={{ height: '-webkit-fill-available' }}>
       {navItems.map((item) => (
         <div key={item.titleItem.id} className="flex flex-col gap-6">
-          <Link href={item.titleItem.path} className="text-md font-bold pl-1" >{item.titleItem.label}</Link>
+          <Link href={item.titleItem.path} className="text-lg text-blue-500 font-bold">{item.titleItem.label}</Link>
           <ul className="flex flex-col flex-wrap gap-4 list-disc">
             {item.listItems.map((listItem) => (
               <li key={listItem.id}>
-                <Link href={listItem.path}>{listItem.label}</Link>
+                <Link href={listItem.path} className="text-md">{listItem.label}</Link>
               </li>
             ))}
           </ul>

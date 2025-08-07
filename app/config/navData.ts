@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { JSX } from 'react';
-import InsightsNewsBlock from '@/app/components/Navbar/CategoriesContent/InsightsNewsBlock';
-import IndustriesNavLayout from '@/app/components/Navbar/CategoriesContent/IndustriesNavLayout';
+import CardsNavLayout from '@/app/components/Navbar/CategoriesContent/CardsNavLayout';
+import CommonNavLayout from '@/app/components/Navbar/CategoriesContent/CommonNavLayout';
 import ServicesNavLayout from '@/app/components/Navbar/CategoriesContent/ServicesNavLayout';
 import ExpertiseNavLayout from '@/app/components/Navbar/CategoriesContent/ExpertiseNavLayout';
 
@@ -13,11 +13,13 @@ export interface Navigation {
   icon?: string | any;
   children?: Navigation[];
   categories?: NavCategory[];
+  component?: () => JSX.Element;
 }
 
 export interface NavCategory {
   name: string;
   component?: () => JSX.Element;
+  path?: string;
 }
 
 export const navItems: Navigation[] = [
@@ -55,7 +57,7 @@ export const navItems: Navigation[] = [
     categories: [
       {
         name: 'Healthcare',
-        component: () => IndustriesNavLayout({
+        component: () => CommonNavLayout({
           title: 'Healthcare and Life Sciences',
           listItems: [
             {
@@ -117,7 +119,7 @@ export const navItems: Navigation[] = [
       },
       {
         name: 'Fintech',
-        component: () => IndustriesNavLayout({
+        component: () => CommonNavLayout({
           title: 'Fintech',
           listItems: [
             {
@@ -137,55 +139,133 @@ export const navItems: Navigation[] = [
       },
       {
         name: 'Education',
-        component: () => IndustriesNavLayout({
+        component: () => CommonNavLayout({
           title: 'Education',
           description: 'We create custom software solutions for education institutions to improve their operations and provide better learning experiences for students.',
         }),
       },
       {
         name: 'Insurance',
-        component: () => IndustriesNavLayout({
+        component: () => CommonNavLayout({
           title: 'Insurance',
           description: 'Engineer ingenious InsurTech solutions and make insurance services more easily accessible. We will help create tools that automate routine tasks, shows outstanding economic resilience and profitability.'
         }),
       },
       {
         name: 'Delivery',
-        component: () => IndustriesNavLayout({
+        component: () => CommonNavLayout({
           title: 'Delivery',
           description: 'We provide a full spectrum of services for developing a mobile ordering app, restaurant online ordering systems, and other industry-leading online ordering solutions.'
         }),
       },
       {
         name: 'Automotive',
-        component: () => IndustriesNavLayout({
+        component: () => CommonNavLayout({
           title: 'Automotive',
-          description: 'Construct elegant and flawless high-tech automotive solutions with Binariks. We will facilitate technology convergence by providing skilled specialists for software development in the automotive industry.'
+          description: 'Construct elegant and flawless high-tech automotive solutions with us. We will facilitate technology convergence by providing skilled specialists for software development in the automotive industry.'
         }),
       },
     ],
   },
   {
     id: uuidv4(),
-    name: 'blog',
-    label: 'Blog',
-    path: '/blog',
-    categories: [
+    name: 'company',
+    label: 'Company',
+    path: '/company',
+    icon: '/icons/company.svg',
+  },
+  {
+    id: uuidv4(),
+    name: 'insights',
+    label: 'Insights',
+    path: '/insights',
+    children: [
       {
-        name: 'blog-posts',
-        component: () => InsightsNewsBlock(),
+        id: uuidv4(),
+        name: 'blog',
+        label: 'Blog',
+        path: '/insights/blog',
+        component: () => CardsNavLayout({
+          items: [
+            {
+              title: "Insights Blog",
+              description: "article",
+              image: "/file.svg",
+              path: "/insights/blog/1",
+            },
+            {
+              title: "Delivery Blog",
+              description: "article",
+              image: "/file.svg",
+              path: "/insights/blog/2",
+            },
+            {
+              title: "Sport Blog",
+              description: "article",
+              image: "/file.svg",
+              path: "/insights/blog/3",
+            },
+          ]
+        }),
       },
       {
-        name: 'blog-categories',
-        component: () => InsightsNewsBlock(),
+        id: uuidv4(),
+        name: 'news',
+        label: 'News',
+        path: '/insights/news',
+        component: () => CardsNavLayout({
+          items: [
+            {
+              title: "Insights News",
+              description: "",
+              image: "/globe.svg",
+              path: "/insights/news/1",
+            },
+            {
+              title: "Delivery News",
+              description: "",
+              image: "/globe.svg",
+              path: "/insights/news/2",
+            },
+            {
+              title: "Sport News",
+              description: "",
+              image: "/globe.svg",
+              path: "/insights/news/3",
+            },
+          ]
+        }),
       },
+      {
+        id: uuidv4(),
+        name: 'events',
+        label: 'Events',
+        path: '/insights/events',
+        component: () => CommonNavLayout({ title: 'Events', description: 'Coming soon...' }),
+      }
     ],
   },
   {
     id: uuidv4(),
-    name: 'about',
-    label: 'About',
-    path: '/about',
-    icon: '/icons/about.svg',
+    name: 'careers',
+    label: 'Careers',
+    path: '/careers',
+    icon: '/icons/careers.svg',
+    categories: [
+      {
+        name: 'careers',
+        component: () => CommonNavLayout({
+          title: 'Careers',
+          description: 'Be yourself with us!',
+        }),
+      },
+      {
+        name: 'Training center',
+        component: () => CommonNavLayout({
+          title: 'Training center',
+          description: 'We are always looking for talented professionals to join our team. If you are passionate about software development and have a proven track record of success, we encourage you to apply for a position at our company.',
+        }),
+      }
+    ]
   },
 ];

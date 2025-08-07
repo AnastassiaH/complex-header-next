@@ -1,4 +1,5 @@
 import { NavCategory } from "@/app/config/navData";
+import Link from "next/link";
 
 interface CategoryListProps {
   categories: NavCategory[];
@@ -11,15 +12,21 @@ const CategoryList = ({ categories, activeCategory, setActiveCategory }: Categor
     <ul
       className="w-[200px] h-full flex flex-col gap-3 border-r-2 border-gray-600 pr-4 py-2"
     >
-      {categories.map((category) => (
-        <li
-          key={category.name}
-          className={`block p-2 hover:bg-gray-600 rounded transition-colors ${activeCategory?.name === category.name ? 'bg-gray-600' : ''}`}
-          onMouseEnter={() => setActiveCategory(category)}
-        >
-          {category.name.charAt(0).toUpperCase() + category.name.slice(1)}
-        </li>
-      ))}
+      {categories.map((category) => {
+        const categoryName = category.name.charAt(0).toUpperCase() + category.name.slice(1);
+
+        return (
+          <li
+            key={category.name}
+            className={`block p-2 hover:bg-gray-600 rounded transition-colors ${activeCategory?.name === category.name ? 'bg-gray-600' : ''}`}
+            onMouseEnter={() => setActiveCategory(category)}
+          >
+            {category?.path
+              ? <Link href={category.path}>{categoryName}</Link>
+              : categoryName}
+          </li>
+        )
+      })}
     </ul>
   )
 }

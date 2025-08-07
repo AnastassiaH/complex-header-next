@@ -22,7 +22,7 @@ const NavLinkActiveBlock = ({ activeNav }: SublinksBlockProps) => {
       <ContentWrapper className="h-full">
         <div className="flex h-full" onMouseLeave={() => setActiveCategory(null)}>
           <CategoryList
-            categories={activeNav?.categories || []}
+            categories={activeNav?.categories || activeNav?.children || []}
             activeCategory={activeCategory}
             setActiveCategory={setActiveCategory}
           />
