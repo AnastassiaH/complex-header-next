@@ -1,3 +1,4 @@
 import ContentWrapper from "./ContentWrapper/ContentWrapper";
+import BlogNewsCard from "./BlogNewsCard/BlogNewsCard";
 
-export { ContentWrapper };
+export { ContentWrapper, BlogNewsCard };

@@ -6,7 +6,7 @@ import { Navigation } from "@/app/config/navData";
 import { navItems } from "@/app/config/navData";
 
 export default function Navbar() {
-  const [activeNav, setActiveNav] = useState<string | null>(null);
+  const [activeNav, setActiveNav] = useState<Navigation | null>(navItems.find((item) => item.name === 'industries') || null);
 
   const clearActiveLink = () => {
     setActiveNav(null);

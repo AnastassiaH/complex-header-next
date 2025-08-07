@@ -1,28 +1,29 @@
 import Link from "next/link";
 import { Navigation } from "@/app/config/navData";
-import NavLinkActiveBlock from "./Sublinks/NavLinkActiveBlock";
+import NavLinkActiveBlock from "./NavLinkActiveBlock";
 
 interface NavItemProps {
   item: Navigation;
-  activeNav: string | null;
-  setActiveNav: (nav: string) => void;
+  activeNav: Navigation | null;
+  setActiveNav: (nav: Navigation) => void;
 }
 
 const NavItemComponent: React.FC<NavItemProps> = ({ item, activeNav, setActiveNav }) => {
-  const hasSublinks = !!item.children?.length;
+  const isMoreInfo = !!item.categories?.length;
+  const isItemActive = item.id === activeNav?.id;
 
   return (
     <li
       key={item.id}
-      className="h-full px-2"
-      onMouseEnter={() => setActiveNav(item.id)}
+      className={`h-full px-2 ${isItemActive ? 'border-b-2 border-blue-500' : 'border-b-2 border-transparent'}`}
+      onMouseEnter={() => setActiveNav(item)}
     >
       <Link href={item.path}
         className="h-full flex items-center text-white hover:text-gray-300 transition-colors">
         {item.label}
 
       </Link>
-      {hasSublinks && <NavLinkActiveBlock activeNav={activeNav} navItem={item} />}
+      {isMoreInfo && isItemActive && <NavLinkActiveBlock activeNav={activeNav} />}
     </li>
   )
 }
